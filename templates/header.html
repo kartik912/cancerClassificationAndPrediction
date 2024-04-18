@@ -1,0 +1,97 @@
+{% load static %}
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="nav">
+        <div class="input">
+            <div>
+                <h1 class="heading" style="display: unset;">Cancer Classification And Prediction</h1>
+
+                <form id="uploadForm" enctype="multipart/form-data" action="{% url 'classify' %}" method="post">
+                    {% csrf_token %}
+                    <input type="file" name="image" id="upload" class="file_input">
+                    <div class="input-box" id="inputBox">Input the file</div>
+                    <label for="upload" class="submit-btn"
+                        style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 16px;">Upload</label>
+                    <input type="submit" class="submit-btn btn" style="margin-left: 10px;">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="info" style="color: black; height: 120vh;">
+        <h3 style="font-size: 40px; font-family: 'Courier New', Courier, monospace; color: #141E46">Cancer</h3>
+        <div style="box-sizing: border-box; background-color:rgb(31, 206, 148) ; border-radius: 20px; padding: 20px;">
+            <p style="font-size: 20px; font-family:'Times New Roman', Times, serif; padding-left: 20px;">
+                Cancer is a term commonly used to refer to a groupaof diseases which are characterizedabyatheauncontrolled
+                growth and spreadaof several abnormal cells and is a significant global health concern. With anaestimated
+                9.6 millionadeaths, or 1 in 6 deaths, in 2018, it ranks as the second most common cause of death globally.
+                The different types of this disease which vary from each other depending on the type of cell the cancer
+                originates from. Cancer can either be primary, starting in a single cell that has been damaged or mutated,
+                or metastatic, referring to the spread of cancer from the primary site to the other parts of the body.
+            </p>
+            <br>
+            <p style="font-size: 20px; font-family:'Times New Roman', Times, serif; padding-left: 20px;">
+                Globally, highly increase in cance¬r cases continues to weigh he¬avily on patients families communities
+                and he-althcare systems both financially and emotionally. The inadequate healthcare systems in numerous
+                low and middle income¬ countries struggle to bear this ove-rwhelming burden. Furthermore¬ a considerable
+                number of cancer patients worldwide are deprived of timely access to accurate diagnoses and superior
+                treatme¬nt options.DNA alterations, or mutations, within cells are what ultimately result in cancer. Several
+                factors can lead to gene mutations, including ones that are inherited, those that develop later in life as a
+                result of smoking, radiation, viruses, carcinogens, obesity, hormones, chronic inflammation, and inactivity.
+                During normal cell development, gene mutations frequently occur. On the other hand, defects are identified
+                and fixed via a system built within cells. Sometimes an error goes unnoticed. This could result in a
+                malignant cell.
+            </p>
+        </div>
+        
+        <br>
+
+        <h3 style="font-size: 40px; font-family: 'Courier New', Courier, monospace; color: #141E46">What are we doing</h3>
+        <div style="box-sizing: border-box; background-color:rgb(31, 206, 148) ; border-radius: 20px; padding: 20px;">
+            <p style="font-size: 20px; font-family:'Times New Roman', Times, serif; padding-left: 20px;">
+                This website uses smart computer programs to helps to find cancer faster and more accurately
+                from ultrasound images. It can spot if the picture is an ultrasound, figure out which body part it shows,
+                detect breast cancer, and even find gallbladder cancer. By doing this, it saves time and helps doctors in
+                places where medical help is hard to get. It's like having a super-smart assistant that helps doctors catch
+                cancer early, giving patients a better chance at beating it. Plus, it helps doctors learn more and make
+                better treatments.
+            </p>
+        </div>
+        
+        <br>
+        <h3 style="font-size: 40px; font-family: 'Courier New', Courier, monospace; color: #141E46">How Is It Useful</h3>
+        <div style="box-sizing: border-box; background-color:rgb(31, 206, 148) ; border-radius: 20px; padding: 20px;">
+            <p style="font-size: 20px; font-family:'Times New Roman', Times, serif; padding-left: 20px;">
+                The approach lowers the need for manual inspection by automating these operations, improving healthcare
+                delivery's accuracy and efficiency. In addition, it offers a platform for ongoing education and development,
+                advancing medical technology.
+            </p>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('inputBox').addEventListener('click', function () {
+            document.getElementById('upload').click();
+        });
+
+        document.getElementById('upload').addEventListener('change', function () {
+            var inputBox = document.getElementById('inputBox');
+            if (this.files && this.files.length > 0) {
+                inputBox.innerHTML = 'File is uploaded';
+            } else {
+                inputBox.innerHTML = 'Input the file';
+            }
+        });
+    </script>
+</body>
+
+</html>

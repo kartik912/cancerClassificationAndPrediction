@@ -1,0 +1,69 @@
+<!-- child.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>result</title>
+    <link rel="stylesheet" href="{% static 'css/style-child.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-box">
+            <img src="data:image/png;base64,{{ image_data }}" alt="User Image" class="image1">
+        </div>
+
+        <div class="content-box">
+            <div class="predicted-class">
+                <h3>Predicted Class:</h3>
+                <p id="res" class="res">{{predicted_class}}</p>
+            </div>
+            <div class="benign">
+                <p id="content-benign" class="active-content">Benign cancer, also referred to as benign tumors, presents
+                    a fascinating aspect of cellular growth that stands in stark contrast to its malignant counterpart. In essence, a benign tumor is an
+                    abnormal proliferation of cells within the body that, while deviating from normal tissue growth patterns,
+                    does not possess the aggressive qualities of malignancy. This phenomenon allows for a distinct classification within the
+                    realm of oncology, where tumors are typically categorized based on their potential for invasiveness and metastasis.
+                </p>
+            </div>
+
+            <div class="normal">
+                <p id="content-normal" class="active-content">Your good bro and have a long life ahead, ENJOY!!!!
+                </p>
+            </div>
+
+            <div class="malignant">
+                <p id="content-malignant" class="active-content">Malignant cancer is a dangerous type of tumor that can
+                    invade nearby tissues and spread to other parts of the body. Unlike harmless tumors, these ones can
+                    grow aggressively and recur after treatment. They show up with symptoms like tiredness, weight loss,
+                    or lumps. Treatment usually involves surgery, drugs, or radiation. Catching it early is super
+                    important for a better chance of beating it. So, if you notice anything strange in your body, it's
+                    essential to get it checked out fast!
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const r = document.getElementById('res').innerText;
+        console.log(r);
+        if (r == "") {
+            document.getElementById('res').innerHTML = "NOT THE VALID FILE";
+        }
+        else if (r == "normal") {
+            document.getElementById('content-normal').style.display = "block";
+        }
+
+        else if (r == "benign") {
+            document.getElementById('content-benign').style.display = "block";
+        }
+
+        else if (r == "malignant") {
+            document.getElementById('content-malignant').style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
